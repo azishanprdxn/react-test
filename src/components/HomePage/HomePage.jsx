@@ -51,7 +51,6 @@ class HomePage extends React.Component {
     } else {
       return (
         <div>
-          {console.log(data)}
           <h1>Hi {user.firstName}!</h1>
           <ul>
             {data.slice(0, showData).map(item => (
@@ -66,20 +65,18 @@ class HomePage extends React.Component {
           <p className="logout">
             <Link to="/login">Logout</Link>
           </p>
-
-          <Switch>
-            <Route path="image/:id" children={<SelectedImage />} />
-          </Switch>
+          <Route path="/image/:id" children={<SelectedImage data={this.state.data} />} />
         </div>
       );
     }
   }
 }
 
-const SelectedImage = () => {
-  let { imageId } = useParams();
+const SelectedImage = (props) => {
+  let { id } = useParams();
+  console.log(id, props.data);
 
-  return <div>{console.log(imageId)}</div>
+  return <div>Selected Image</div>;
 }
 
 function mapState(state) {

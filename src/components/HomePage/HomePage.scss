@@ -9,9 +9,7 @@ ul {
 
   li {
     width: 25%;
-    padding: 12px;
     position: relative;
-    cursor: pointer;
     
     .list-id {
       padding: 6px 8px;
@@ -21,6 +19,14 @@ ul {
       font-size: 18px;
       font-weight: bold;
       background-color: #fff;
+    }
+
+    img {
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 6px #454545;
+      }
     }
   }
 }
