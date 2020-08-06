@@ -1,5 +1,11 @@
 import React from 'react';
-import { Route, Link, Switch, useParams } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -51,21 +57,29 @@ class HomePage extends React.Component {
     } else {
       return (
         <div>
-          <h1>Hi {user.firstName}!</h1>
-          <ul>
-            {data.slice(0, showData).map(item => (
-              <li key={item.id}>
-                <span className="list-id">{item.id}</span>
-                <Link to={`/image/${item.id}`}>
-                  <img src={item.thumbnailUrl} />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Router>
+            <div>
+              <h1>Hi {user.firstName}!</h1>
+              <ul>
+                {data.slice(0, showData).map(item => (
+                  <li key={item.id}>
+                    <span className="list-id">{item.id}</span>
+                    <Link to={`/image/${item.id}`}>
+                      <img src={item.thumbnailUrl} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Switch>
+                <Route path="/image/:id" children={
+                  <SelectedImage data={this.state.data} />
+                } />
+              </Switch>
+            </div>
+          </Router>
           <p className="logout">
             <Link to="/login">Logout</Link>
           </p>
-          <Route path="/image/:id" children={<SelectedImage data={this.state.data} />} />
         </div>
       );
     }
@@ -74,9 +88,19 @@ class HomePage extends React.Component {
 
 const SelectedImage = (props) => {
   let { id } = useParams();
-  console.log(id, props.data);
+  let { data } = props;
+  const showData = 20;
+  let imageUrl;
+  console.log(id, data);
 
-  return <div>Selected Image</div>;
+  return <div>
+    <p>Image Url:</p>
+    {data.slice(0, showData).map(item => (
+      Number(id) === item.id ? imageUrl = item.url : null
+    ))}
+    <h3>Selected Image</h3>
+    <img src={imageUrl} />
+  </div>;
 }
 
 function mapState(state) {
