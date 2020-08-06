@@ -91,7 +91,6 @@ const SelectedImage = (props) => {
   let { data } = props;
   const showData = 20;
   let imageUrl;
-  console.log(id, data);
 
   return <div>
     <p>Image Url:</p>
