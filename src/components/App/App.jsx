@@ -9,6 +9,7 @@ import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 
+import './../styles/common.scss';
 import './App.scss';
 
 class App extends React.Component {
@@ -29,7 +30,7 @@ class App extends React.Component {
           <div>
             {
               alert.message &&
-              <div>{alert.message}</div>
+              <div className="alert-message">{alert.message}</div>
             }
             <Router history={history}>
               <Switch>

@@ -1,3 +1,7 @@
-a {
-  cursor: pointer;
+.alert-message {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  font-size: 18px;
+  transform: translateX(-50%);
 }

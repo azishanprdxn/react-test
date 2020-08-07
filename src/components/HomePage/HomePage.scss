@@ -1,44 +1,134 @@
-ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  align-items: center;
+@import './../styles/variables.scss';
 
-  li {
-    width: 25%;
-    position: relative;
-    
-    .list-id {
-      padding: 6px 8px;
-      position: absolute;
-      top: 2px;
-      left: 2px;
+.error {
+  text-align: center;
+  margin-top: 72px;
+  font-size: 24px;
+  color: $red;
+}
+
+.main {
+  position: relative;
+  margin-top: 48px;
+  margin-bottom: 32px;
+
+  p {
+    padding-bottom: 24px;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 24px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+
+    li {
+      width: 25%;
+
+      .content {
+        position: relative;
+        margin: 12px;
+
+        img {
+          min-width: 100%;
+        }
+        
+        .list-id {
+          padding: 6px 12px;
+          border-radius: 4px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 18px;
+          font-weight: bold;
+          background-color: $primary;
+          color: $secondary;
+        }
+
+        img {
+          border: 2px solid $primary;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: 0 0 10px $primary;
+          }
+        }
+      }
+    }
+  }
+
+  .logout {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+
+    h3 {
+      display: inline;
+      margin-right: 24px;
+      vertical-align: middle;
       font-size: 18px;
-      font-weight: bold;
-      background-color: #fff;
+      text-align: center;
     }
 
-    img {
-      cursor: pointer;
+    a {
+      padding: 8px 24px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      background-color: $primary;
+      color: $secondary;
+      text-decoration: none;
+      transition: .2s ease-in;
 
       &:hover {
-        box-shadow: 0 0 6px #454545;
+        background-color: transparent;
+        border: 2px solid $primary;
+        color: $primary;
       }
     }
   }
 }
 
-.logout {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+.selected-image {
+  text-align: center;
+
+  h3 {
+    padding: 24px 0;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  img {
+    min-width: 50%;
+    border: 2px solid $primary;
+    border-radius: 8px;
+  }
 
   a {
-    padding: 6px 14px;
-    border: 2px solid #454545;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 24px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    margin: 24px 0;
+    background-color: $primary;
+    color: $secondary;
     text-decoration: none;
+    transition: .2s ease-in;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid $primary;
+      color: $primary;
+    }
   }
 }
